@@ -1,42 +1,196 @@
 <!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
-    </head>
-    <body>
-        <div class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
+
+<head>
+
+
+  <link rel="stylesheet" type="text/css" href="app_framework/css/af.ui.min.css">
+  <link rel="stylesheet" type="text/css" href="app_framework/css/icons.min.css">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
+  <title>Your New Application</title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+  <style type="text/css">
+    /* Prevent copy paste for all elements except text fields */
+    *  { -webkit-user-select:none; -webkit-tap-highlight-color:rgba(255, 255, 255, 0); }
+    input, textarea  { -webkit-user-select:text; }
+  </style>
+  <script src="intelxdk.js"></script>
+  <script type="text/javascript">
+    /* This code is used to run as soon as Intel activates */
+    var onDeviceReady=function(){
+      //hide splash screen
+      intel.xdk.device.hideSplashScreen();
+    };
+    document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
+  </script>
+  <script type="application/javascript" src="app_framework/appframework.min.js"></script>
+  <script type="application/javascript" src="app_framework/appframework.ui.min.js"></script>
+  <script type="application/javascript" src="js/jquery.min.js"></script>
+  <script type="application/javascript" src="sidebar/js/jquery.event.move.js"></script>
+  <script type="application/javascript" src="sidebar/js/jquery.event.swipe.js"></script>
+  <script type="application/javascript" src="sidebar/js/sidebar.js"></script>
+  <script type="application/javascript" src="sidebar/js/swipe.js"></script>
+  <script type="application/javascript" src="phonegap.js"></script>
+</head>
+
+<body id="afui">
+
+
+
+  <!-- content goes here-->
+  <div class="uwrap" id="content">
+    <div class="upage panel" id="page0" data-header="none" data-footer="none">
+      <div class="upage-outer">
+        <div class="upage-content">
+
+          <div class="grid grid-pad urow uib_row_1 row-height-1" data-uib="layout/row">
+            <div class="col uib_col_1 col-0_12-12" data-uib="layout/col">
+              <div class="widget-container content-area vertical-col">
+
+                <div class="table-thing with-label widget uib_w_5 d-margins" data-uib="app_framework/select">
+                  <label class="narrow-control label-inline">Year</label>
+                  <select class="wide-control">
+                    <option>All</option>
+                    <option>2013</option>
+                    <option>2012</option>
+                    <option>2011</option>
+                    <option>2010</option>
+                    <option>2009</option>
+                    <option>2008</option>
+                    <option>2007</option>
+                    <option>2006</option>
+                    <option>2005</option>
+                    <option>2004</option>
+                    <option>2003</option>
+                  </select>
+                </div>
+                <div class="table-thing with-label widget uib_w_6 d-margins" data-uib="app_framework/select">
+                  <label class="narrow-control label-inline">Month</label>
+                  <select class="wide-control">
+                    <option>All</option>
+                    <option>January</option>
+                    <option>February</option>
+                    <option>March</option>
+                    <option>April</option>
+                    <option>May</option>
+                    <option>June</option>
+                    <option>July</option>
+                    <option>August</option>
+                    <option>September</option>
+                    <option>October</option>
+                    <option>November</option>
+                    <option>December</option>
+                  </select>
+                </div>
+
+                <div class="table-thing with-label widget uib_w_8 d-margins" data-uib="app_framework/select">
+                  <label class="narrow-control label-inline">Type</label>
+                  <select class="wide-control">
+                    <option>All</option>
+                    <option>Land</option>
+                    <option>Marine</option>
+                  </select>
+                </div>
+                <ul class="list widget uib_w_1 d-margins" data-uib="app_framework/listview">
+                  <li class="widget uib_w_2" data-uib="app_framework/listitem"><a>1A - Crude Oil and Condensate Production</a>
+                  </li>
+                  <li class="widget uib_w_3" data-uib="app_framework/listitem"><a>1B - Condensate Production (only)</a>
+                  </li>
+                  <li class="widget uib_w_4" data-uib="app_framework/listitem"><a>2A - Drilling Rigs In use</a>
+                  </li>
+                  <li class="widget uib_w_9" data-uib="app_framework/listitem"><a>2B - Rig Days</a>
+                  </li>
+                  <li class="widget uib_w_10" data-uib="app_framework/listitem"><a>2C - Depth Drilled</a>
+                  </li>
+                  <li class="widget uib_w_25" data-uib="app_framework/listitem"><a>2D - Wells Started</a>
+                  </li>
+                  <li class="widget uib_w_24" data-uib="app_framework/listitem"><a>2E - Well Completions</a>
+                  </li>
+                  <li class="widget uib_w_23" data-uib="app_framework/listitem"><a>2F - MEEA Approved Workovers Completed and Winch Hours</a>
+                  </li>
+                  <li class="widget uib_w_22" data-uib="app_framework/listitem"><a>3A - Natural Gas Production By Company</a>
+                  </li>
+                  <li class="widget uib_w_21" data-uib="app_framework/listitem"><a>3B - Natural Gas Utilization By Sector</a>
+                  </li>
+                  <li class="widget uib_w_20" data-uib="app_framework/listitem"><a>4A - Crude Oil Imports</a>
+                  </li>
+                  <li class="widget uib_w_19" data-uib="app_framework/listitem"><a>4B - Crude Oil Exports</a>
+                  </li>
+                  <li class="widget uib_w_18" data-uib="app_framework/listitem"><a>4C - Petrotrin PAP Refinery Sales</a>
+                  </li>
+                  <li class="widget uib_w_17" data-uib="app_framework/listitem"><a>4D - Petrotrin PAP Refinery Outpu</a>
+                  </li>
+                  <li class="widget uib_w_16" data-uib="app_framework/listitem"><a>4E - Petrotrin PAP Refinery Throughput</a>
+                  </li>
+                  <li class="widget uib_w_15" data-uib="app_framework/listitem"><a>5A - Production and Export of NGLs from PPGPL</a>
+                  </li>
+                  <li class="widget uib_w_14" data-uib="app_framework/listitem"><a>5B - Production and Export of Ammonia and Urea</a>
+                  </li>
+                  <li class="widget uib_w_13" data-uib="app_framework/listitem"><a>5C - Production and Export of Methanol</a>
+                  </li>
+                  <li class="widget uib_w_12" data-uib="app_framework/listitem"><a>5D - Production of LNG from ALNG</a>
+                  </li>
+                  <li class="widget uib_w_11" data-uib="app_framework/listitem"><a>5E - LNG and NGL Sales, Deliveries and Redeliveries from ALNG</a>
+                  </li>
+                </ul>
+
+                <span class="uib_shim"></span>
+              </div>
             </div>
+            <span class="uib_shim"></span>
+          </div>
         </div>
-        <script type="text/javascript" src="phonegap.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
-    </body>
+        <!-- /upage-content -->
+
+        <div class="inner-element uib_w_26 uib_sidebar leftbar bar-bg thumb-bg bar-gutter swipe" data-uib="layout/left_sidebar" data-anim="{'style':'squeeze', 'v':200, 'side':'left'}">
+          <div class="sidebar-content">
+
+            <div class="grid grid-pad urow uib_row_2 row-height-2" data-uib="layout/row">
+              <div class="col uib_col_2 col-0_12-12" data-uib="layout/col">
+                <div class="widget-container content-area vertical-col">
+                  <span class="uib_shim"></span>
+                </div>
+              </div>
+              <span class="uib_shim"></span>
+            </div>
+
+
+            <div class="grid grid-pad urow uib_row_3 row-height-3" data-uib="layout/row">
+              <div class="col uib_col_3 col-0_12-12" data-uib="layout/col">
+                <div class="widget-container content-area vertical-col">
+
+                  <div class="table-thing with-label widget uib_w_27 d-margins" data-uib="app_framework/flip_switch">
+                    <label class="narrow-control label-inline">All</label>
+                    <div class="wide-control">
+                      <input type="checkbox" class="toggle" id="af-flipswitch-0" checked="checked">
+                      <label for="af-flipswitch-0" data-off="No" data-on="Yes"><span></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="table-thing with-label widget uib_w_28 d-margins" data-uib="app_framework/flip_switch">
+                    <label class="narrow-control label-inline">BGTT</label>
+                    <div class="wide-control">
+                      <input type="checkbox" class="toggle" id="af-flipswitch-1">
+                      <label for="af-flipswitch-1" data-off="No" data-on="Yes"><span></span>
+                      </label>
+                    </div>
+                  </div><span class="uib_shim"></span>
+                </div>
+              </div>
+              <span class="uib_shim"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /upage-outer -->
+
+    </div>
+    <!-- /upage -->
+
+  </div>
+  <!-- /uwrap -->
+</body>
+
 </html>
