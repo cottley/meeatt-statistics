@@ -191,7 +191,7 @@
           <a class="button widget uib_w_3 d-margins icon close" data-uib="app_framework/button" href="javascript:exitApp()">Exit</a>
         </div>
       </header>
-      <div> 
+      <div class="widget-container content-area vertical-col">
       <h2 style="height:auto !important">Report Data for {{reportSection.title}} {{ getFilterDescription() }}</h2>
       <div ng-show="!((filterYear != 'All') && (filterMonth != 'All')) || (filter_availableOperators.length <= 1)">
       <h3 style="height:auto !important">By year</h3>
