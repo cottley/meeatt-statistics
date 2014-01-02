@@ -1,3 +1,4 @@
+/*jslint sloppy: true */
 /*global document, navigator */
 
 function onConfirmQuit(button) {
@@ -15,7 +16,7 @@ function init() {
             'Do you want to quit?',
             onConfirmQuit,
             'MEEA TT Statistics',
-            'OK,Cancel'
+            ['OK', 'Cancel']
         );
     }, true);
 }
@@ -25,6 +26,6 @@ function exitApp() {
         'Do you want to quit?',
         onConfirmQuit,
         'Exit MEEA TT Statistics',
-        'Yes,No'
+        ['Yes', 'No']
     );
 }
