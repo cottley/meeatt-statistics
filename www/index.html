@@ -1,14 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html data-ng-app="myApp">
 
 <head>
+
+
+
+
+
+
 
 
   <link rel="stylesheet" type="text/css" href="app_framework/css/af.ui.min.css">
   <link rel="stylesheet" type="text/css" href="app_framework/css/icons.min.css">
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
-  <title>Your New Application</title>
+  <title>MEEA Statistics</title>
   <meta http-equiv="Content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
   <style type="text/css">
@@ -27,170 +33,263 @@
   </script>
   <script type="application/javascript" src="app_framework/appframework.min.js"></script>
   <script type="application/javascript" src="app_framework/appframework.ui.min.js"></script>
-  <script type="application/javascript" src="js/jquery.min.js"></script>
-  <script type="application/javascript" src="sidebar/js/jquery.event.move.js"></script>
-  <script type="application/javascript" src="sidebar/js/jquery.event.swipe.js"></script>
-  <script type="application/javascript" src="sidebar/js/sidebar.js"></script>
-  <script type="application/javascript" src="sidebar/js/swipe.js"></script>
   <script type="application/javascript" src="phonegap.js"></script>
+  <script type="application/javascript" src="js/underscore-min.js"></script>
+  <script type="application/javascript" src="js/numeral.js"></script>
+  <script type="application/javascript" src="js/app.js"></script>
+  <script type="application/javascript" src="js/angular.min.js"></script>
+  <script type="application/javascript" src="js/angular.myapp.js"></script>
 </head>
 
-<body id="afui">
+<body data-ng-controller="myAppController">
 
-
+  <div id="navbar">
+    <a href="#filter" id="navbar_filter" class="icon magnifier">Filter</a>
+    <a href="#reports" id="navbar_reports" class="icon paper">Reports</a>
+    <!-- a href="#graph" id="navbar_graph" class="icon graph">Graph</a -->
+    <a href="#about" id="navbar_about" class="icon question">About</a>
+  </div>
 
   <!-- content goes here-->
   <div class="uwrap" id="content">
-    <div class="upage panel" id="page0" data-header="none" data-footer="none">
-      <div class="upage-outer">
-        <div class="upage-content">
 
-          <div class="grid grid-pad urow uib_row_1 row-height-1" data-uib="layout/row">
-            <div class="col uib_col_1 col-0_12-12" data-uib="layout/col">
-              <div class="widget-container content-area vertical-col">
+    <div title="MEEA TT Statistics - Filter" id="filter" class="panel" data-tab="navbar_filter">
+      <header>
+        <h1>MEEA TT Statistics</h1>
+        <div class="widget-container wrapping-col single-centered"></div>
+        <div class="widget-container content-area horiz-area wrapping-col left"></div>
+        <div class="widget-container content-area horiz-area wrapping-col right">
+          <a class="button widget uib_w_3 d-margins icon close" data-uib="app_framework/button" href="javascript:exitApp()">Exit</a>
+        </div>
+      </header>
+      <h2>Filter</h2>
+      <hr>
+      <div class="grid grid-pad urow uib_row_1 row-height-1" data-uib="layout/row">
+        <div class="col uib_col_2 col-0_12-12" data-uib="layout/col">
+          <div class="widget-container content-area vertical-col">
 
-                <div class="table-thing with-label widget uib_w_5 d-margins" data-uib="app_framework/select">
-                  <label class="narrow-control label-inline">Year</label>
-                  <select class="wide-control">
-                    <option>All</option>
-                    <option>2013</option>
-                    <option>2012</option>
-                    <option>2011</option>
-                    <option>2010</option>
-                    <option>2009</option>
-                    <option>2008</option>
-                    <option>2007</option>
-                    <option>2006</option>
-                    <option>2005</option>
-                    <option>2004</option>
-                    <option>2003</option>
-                  </select>
-                </div>
-                <div class="table-thing with-label widget uib_w_6 d-margins" data-uib="app_framework/select">
-                  <label class="narrow-control label-inline">Month</label>
-                  <select class="wide-control">
-                    <option>All</option>
-                    <option>January</option>
-                    <option>February</option>
-                    <option>March</option>
-                    <option>April</option>
-                    <option>May</option>
-                    <option>June</option>
-                    <option>July</option>
-                    <option>August</option>
-                    <option>September</option>
-                    <option>October</option>
-                    <option>November</option>
-                    <option>December</option>
-                  </select>
-                </div>
-
-                <div class="table-thing with-label widget uib_w_8 d-margins" data-uib="app_framework/select">
-                  <label class="narrow-control label-inline">Type</label>
-                  <select class="wide-control">
-                    <option>All</option>
-                    <option>Land</option>
-                    <option>Marine</option>
-                  </select>
-                </div>
-                <ul class="list widget uib_w_1 d-margins" data-uib="app_framework/listview">
-                  <li class="widget uib_w_2" data-uib="app_framework/listitem"><a>1A - Crude Oil and Condensate Production</a>
-                  </li>
-                  <li class="widget uib_w_3" data-uib="app_framework/listitem"><a>1B - Condensate Production (only)</a>
-                  </li>
-                  <li class="widget uib_w_4" data-uib="app_framework/listitem"><a>2A - Drilling Rigs In use</a>
-                  </li>
-                  <li class="widget uib_w_9" data-uib="app_framework/listitem"><a>2B - Rig Days</a>
-                  </li>
-                  <li class="widget uib_w_10" data-uib="app_framework/listitem"><a>2C - Depth Drilled</a>
-                  </li>
-                  <li class="widget uib_w_25" data-uib="app_framework/listitem"><a>2D - Wells Started</a>
-                  </li>
-                  <li class="widget uib_w_24" data-uib="app_framework/listitem"><a>2E - Well Completions</a>
-                  </li>
-                  <li class="widget uib_w_23" data-uib="app_framework/listitem"><a>2F - MEEA Approved Workovers Completed and Winch Hours</a>
-                  </li>
-                  <li class="widget uib_w_22" data-uib="app_framework/listitem"><a>3A - Natural Gas Production By Company</a>
-                  </li>
-                  <li class="widget uib_w_21" data-uib="app_framework/listitem"><a>3B - Natural Gas Utilization By Sector</a>
-                  </li>
-                  <li class="widget uib_w_20" data-uib="app_framework/listitem"><a>4A - Crude Oil Imports</a>
-                  </li>
-                  <li class="widget uib_w_19" data-uib="app_framework/listitem"><a>4B - Crude Oil Exports</a>
-                  </li>
-                  <li class="widget uib_w_18" data-uib="app_framework/listitem"><a>4C - Petrotrin PAP Refinery Sales</a>
-                  </li>
-                  <li class="widget uib_w_17" data-uib="app_framework/listitem"><a>4D - Petrotrin PAP Refinery Outpu</a>
-                  </li>
-                  <li class="widget uib_w_16" data-uib="app_framework/listitem"><a>4E - Petrotrin PAP Refinery Throughput</a>
-                  </li>
-                  <li class="widget uib_w_15" data-uib="app_framework/listitem"><a>5A - Production and Export of NGLs from PPGPL</a>
-                  </li>
-                  <li class="widget uib_w_14" data-uib="app_framework/listitem"><a>5B - Production and Export of Ammonia and Urea</a>
-                  </li>
-                  <li class="widget uib_w_13" data-uib="app_framework/listitem"><a>5C - Production and Export of Methanol</a>
-                  </li>
-                  <li class="widget uib_w_12" data-uib="app_framework/listitem"><a>5D - Production of LNG from ALNG</a>
-                  </li>
-                  <li class="widget uib_w_11" data-uib="app_framework/listitem"><a>5E - LNG and NGL Sales, Deliveries and Redeliveries from ALNG</a>
-                  </li>
-                </ul>
-
-                <span class="uib_shim"></span>
+            <div class="table-thing with-label widget uib_w_4 d-margins" data-uib="app_framework/select">
+              <label class="narrow-control label-inline">Year</label>
+              <select class="wide-control" ng-model="filterYear" ng-change="onFilterYearChanged()">
+                <option>All</option>
+                <option data-ng-repeat="availableYear in filter_availableYears">{{ availableYear }}</option>
+              </select>
+            </div>
+            <div class="table-thing with-label widget uib_w_5 d-margins" data-uib="app_framework/select">
+              <label class="narrow-control label-inline">Month</label>
+              <select class="wide-control" ng-model="filterMonth" ng-change="onFilterMonthChanged()">
+                <option>All</option>
+                <option>January</option>
+                <option>February</option>
+                <option>March</option>
+                <option>April</option>
+                <option>May</option>
+                <option>June</option>
+                <option>July</option>
+                <option>August</option>
+                <option>September</option>
+                <option>October</option>
+                <option>November</option>
+                <option>December</option>
+              </select>
+            </div>
+            <!-- div class="table-thing with-label widget d-margins" data-uib="app_framework/select">
+              <label class="narrow-control label-inline">Type</label>
+              <select class="wide-control" ng-model="filterType">
+                <option>All</option>
+                <option>LAND</option>
+                <option>MARINE</option>
+              </select>
+            </div -->              
+            <div class="table-thing with-label widget uib_w_6 d-margins fswidth" data-uib="app_framework/flip_switch">
+              <label class="narrow-control label-inline">Include All Operators</label>
+              <div class="wide-control">
+                <input type="checkbox" class="toggle" id="af-flipswitch-1" checked="checked" ng-model="filter_includeAllOperators" ng-change="onAllOperatorsChanged()">
+                <label for="af-flipswitch-1" data-off="No" data-on="Yes"><span></span>
+                </label>
               </div>
             </div>
-            <span class="uib_shim"></span>
+            <hr>  
+<!--              
+            <div class="table-thing with-label widget uib_w_7 d-margins" data-uib="app_framework/textarea">
+              <textarea class="wide-control" placeholder="Find Operators" rows="2" wrap="soft" ng-model="findOperators"></textarea>
+            </div>
+            <div class="grid grid-pad urow uib_row_1 row-height-1" data-uib="layout/row">
+              <a class="button widget uib_w_9 d-margins" data-uib="app_framework/button">Mark YES</a>&nbsp;
+              <a class="button widget uib_w_10 d-margins" data-uib="app_framework/button">Mark NO</a>
+            </div>
+-->
+            <div data-ng-repeat="availableOperator in filter_allAvailableOperators | filter:findOperators">
+              <div class="table-thing with-label widget fswidth" data-uib="app_framework/flip_switch">
+                <label class="narrow-control label-inline">{{ availableOperator }} {{ abbreviationDescription(availableOperator) }}</label>
+                <div class="wide-control">
+                    
+                  <input type="checkbox" class="toggle operatorlist" id="{{ availableOperator }}-flipswitch" name="{{ availableOperator }}-flipswitch" >
+                
+                  <label for="{{ availableOperator }}-flipswitch" data-off="No" data-on="Yes"><span></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
           </div>
         </div>
-        <!-- /upage-content -->
-
-        <div class="inner-element uib_w_26 uib_sidebar leftbar bar-bg thumb-bg bar-gutter swipe" data-uib="layout/left_sidebar" data-anim="{'style':'squeeze', 'v':200, 'side':'left'}">
-          <div class="sidebar-content">
-
-            <div class="grid grid-pad urow uib_row_2 row-height-2" data-uib="layout/row">
-              <div class="col uib_col_2 col-0_12-12" data-uib="layout/col">
-                <div class="widget-container content-area vertical-col">
-                  <span class="uib_shim"></span>
-                </div>
-              </div>
-              <span class="uib_shim"></span>
-            </div>
-
-
-            <div class="grid grid-pad urow uib_row_3 row-height-3" data-uib="layout/row">
-              <div class="col uib_col_3 col-0_12-12" data-uib="layout/col">
-                <div class="widget-container content-area vertical-col">
-
-                  <div class="table-thing with-label widget uib_w_27 d-margins" data-uib="app_framework/flip_switch">
-                    <label class="narrow-control label-inline">All</label>
-                    <div class="wide-control">
-                      <input type="checkbox" class="toggle" id="af-flipswitch-0" checked="checked">
-                      <label for="af-flipswitch-0" data-off="No" data-on="Yes"><span></span>
-                      </label>
-                    </div>
-                  </div>
-                  <div class="table-thing with-label widget uib_w_28 d-margins" data-uib="app_framework/flip_switch">
-                    <label class="narrow-control label-inline">BGTT</label>
-                    <div class="wide-control">
-                      <input type="checkbox" class="toggle" id="af-flipswitch-1">
-                      <label for="af-flipswitch-1" data-off="No" data-on="Yes"><span></span>
-                      </label>
-                    </div>
-                  </div><span class="uib_shim"></span>
-                </div>
-              </div>
-              <span class="uib_shim"></span>
-            </div>
-          </div>
-        </div>
+        <span class="uib_shim"></span>
       </div>
-      <!-- /upage-outer -->
 
     </div>
-    <!-- /upage -->
 
+    <div title="MEEA TT Statistics - Reports" id="reports" class="panel" data-tab="navbar_reports">
+      <header>
+        <h1>MEEA TT Statistics</h1>
+        <div class="widget-container wrapping-col single-centered"></div>
+        <div class="widget-container content-area horiz-area wrapping-col left"></div>
+        <div class="widget-container content-area horiz-area wrapping-col right">
+          <a class="button widget uib_w_3 d-margins icon close" data-uib="app_framework/button" href="javascript:exitApp()">Exit</a>
+        </div>
+      </header>
+      <h2>Reports</h2> 
+      <textarea class="wide-control" placeholder="Search Reports" rows="2" wrap="soft" ng-model="searchReportTitle"></textarea>
+      <div>
+        <ul class="list inset" data-ng-controller="myAppController" id="reportSectionList">
+          <li class="divider">Crude Oil Production</li>
+          <li data-ng-repeat="reportSection in reportSectionBySegment('1') | filter:searchReportTitle ">
+            <a href="#reportdata{{reportSection.id}}">{{reportSection.title}}</a> 
+          </li>
+            <!--
+          <li class="divider">Drilling, Completions and Workovers</li>
+          <li data-ng-repeat="reportSection in reportSectionBySegment('2') | filter:searchReportTitle ">
+            <a href="#reportdata{{reportSection.id}}">{{reportSection.title}}</a> 
+          </li>
+          <li class="divider">Natural Gas Production and Utilization</li>
+          <li data-ng-repeat="reportSection in reportSectionBySegment('3') | filter:searchReportTitle ">
+            <a href="#reportdata{{reportSection.id}}">{{reportSection.title}}</a> 
+          </li>
+          <li class="divider">Crude Oil Imports, Exports and Refining</li>
+          <li data-ng-repeat="reportSection in reportSectionBySegment('4') | filter:searchReportTitle ">
+            <a href="#reportdata{{reportSection.id}}">{{reportSection.title}}</a> 
+          </li>
+          <li class="divider">Natural Gas Processing and Conversion to Petrochemicals</li>
+          <li data-ng-repeat="reportSection in reportSectionBySegment('5') | filter:searchReportTitle ">
+            <a href="#reportdata{{reportSection.id}}">{{reportSection.title}}</a> 
+          </li>
+            -->
+        </ul>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+      </div>
+    </div>
+
+    <div data-ng-repeat="reportSection in reportSections" title="MEEA TT Statistics - Report Data" id="reportdata{{reportSection.id}}" class="panel" data-tab="navbar_reports">
+      <header>
+        <h1>MEEA TT Statistics</h1>
+        <div class="widget-container wrapping-col single-centered"></div>
+        <div class="widget-container content-area horiz-area wrapping-col left">
+          <a class="button widget uib_w_3 d-margins icon up" data-uib="app_framework/button" ng-show="canDrillUp()" ng-click="drillUp()">Up</a>
+        </div>
+        <div class="widget-container content-area horiz-area wrapping-col right">
+          <a class="button widget uib_w_3 d-margins icon close" data-uib="app_framework/button" href="javascript:exitApp()">Exit</a>
+        </div>
+      </header>
+      <div> 
+      <h2 style="height:auto !important">Report Data for {{reportSection.title}} {{ getFilterDescription() }}</h2>
+      <div ng-show="!((filterYear != 'All') && (filterMonth != 'All')) || (filter_availableOperators.length <= 1)">
+      <h3 style="height:auto !important">By year</h3>
+      <table border="0" style="border-collapse:collapse;width:100%">
+          <tr data-ng-repeat="reportData in calculated_reportData[reportSection.id]" style="border-bottom: 1px solid">
+            <td width="90%"><h3 style="padding:10px 5px 5px 5px;"><a ng-click="drillDown(reportData.col1)">{{ reportData.col1 }}</a></h3></td>
+            <td align="right"><h3><a ng-click="drillDown(reportData.col1)">{{ reportDataFormat(reportData.col2) }}</a></h3></td>
+          </tr>
+      </table>
+      <table border="0" style="border-collapse:collapse;with:100%">
+          <tr style="border-bottom: 3px solid">
+            <td width="90%"><h2>Total</h2></td>
+            <td align="right"><h2>{{ getReportDataTotal(reportSection.id) }}</h2></td>
+          </tr>
+      </table>
+        <br>
+        <br>
+      </div>
+      <div ng-show="(filter_availableOperators.length > 1)">  
+      <h3 style="height:auto !important">By Operator</h3>
+      <table border="0" style="border-collapse:collapse;width:100%">
+          <tr data-ng-repeat="reportData in calculated_reportDataByOperator[reportSection.id]" style="border-bottom: 1px solid">
+            <td width="90%"><h3 style="padding:10px 5px 5px 5px;"><a ng-click="drillDownByOperator(reportData.col1)">{{ reportData.col1 }} {{ abbreviationDescription(reportData.col1) }}</a></h3></td>
+            <td align="right"><h3><a ng-click="drillDownByOperator(reportData.col1)">{{ reportDataFormat(reportData.col2) }}</a></h3></td>
+          </tr>
+      </table>
+      <table border="0" style="border-collapse:collapse;with:100%">
+          <tr style="border-bottom: 3px solid">
+            <td width="90%"><h2>Total</h2></td>
+            <td align="right"><h2>{{ getReportDataByOperatorTotal(reportSection.id) }}</h2></td>
+          </tr>
+      </table>
+          </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br> <br>
+        </div>  
+     </div>
+        
+    </div>      
+      
+    <div title="MEEA TT Statistics - Graph" id="graph" class="panel" data-tab="navbar_graph">
+      <header>
+        <h1>MEEA TT Statistics</h1>
+        <div class="widget-container wrapping-col single-centered"></div>
+        <div class="widget-container content-area horiz-area wrapping-col left"></div>
+        <div class="widget-container content-area horiz-area wrapping-col right">
+          <a class="button widget uib_w_3 d-margins icon close" data-uib="app_framework/button" href="javascript:exitApp()">Exit</a>
+        </div>
+      </header>
+      <h2>Graph</h2> 
+      <hr>Not implemented.
+    </div>
+
+    <div title="MEEA TT Statistics - About" id="about" class="panel" data-tab="navbar_about">
+      <header>
+        <h1>MEEA TT Statistics</h1>
+        <div class="widget-container wrapping-col single-centered"></div>
+        <div class="widget-container content-area horiz-area wrapping-col left"></div>
+        <div class="widget-container content-area horiz-area wrapping-col right">
+          <a class="button widget uib_w_3 d-margins icon close" data-uib="app_framework/button" href="javascript:exitApp()">Exit</a>
+        </div>
+      </header>
+      <h2>About</h2>
+      <hr>
+      <br>
+      <div>
+        <a href="#diagnostics">
+          <img src="images/meeattlogo.png">
+        </a>
+      </div>
+      <h2><span style="color:red">Unofficial</span> Ministry of Energy and Energy Affairs Trinidad and Tobago Statistics App b20140101 </h2>
+      <br>
+      <br>
+      <h2>by Christopher Ottley</h2>
+      <br>
+      <h3>Use your mobile phone to quickly find data on statistics provided by the Ministry of Energy and Energy Affairs on their website.</h3>
+      <p>Portions Copyright (c) 2014, Christopher Ottley
+        <br>All rights reserved.</p>
+      <p>Developed using Intel XDK, Intel App Framework, AngularJS, UnderscoreJS, Numeral.js PhoneGap, GIMP and Google Chrome.</p>
+      <p>Statistics sourced from the MEEA Trinidad and Tobago's website. All images are copyright to their respective owners.</p>
+      <p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
+        EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+        OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
+        OF SUCH DAMAGE.</p>
+    </div>
   </div>
-  <!-- /uwrap -->
+
+
 </body>
 
 </html>
