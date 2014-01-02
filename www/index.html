@@ -191,7 +191,17 @@
           <a class="button widget uib_w_3 d-margins icon close" data-uib="app_framework/button" href="javascript:exitApp()">Exit</a>
         </div>
       </header>
-      <div class="widget-container content-area vertical-col">
+      <div class="upage-outer">
+        <div class="upage-content">
+
+          <div class="grid grid-pad urow uib_row_1 row-height-1" data-uib="layout/row">
+            <div class="col uib_col_1 col-0_12-12" data-uib="layout/col">
+              <div class="widget-container content-area vertical-col">
+
+                <div class="widget uib_w_1 d-margins" data-uib="media/text">
+                  <div class="widget-container left-receptacle"></div>
+                  <div class="widget-container right-receptacle"></div>
+                  <div>
       <h2 style="height:auto !important">Report Data for {{reportSection.title}} {{ getFilterDescription() }}</h2>
       <div ng-show="!((filterYear != 'All') && (filterMonth != 'All')) || (filter_availableOperators.length <= 1)">
       <h3 style="height:auto !important">By year</h3>
@@ -230,7 +240,18 @@
         <br>
         <br>
         <br> <br>
-        </div>  
+                  </div>
+                </div><span class="uib_shim"></span>
+              </div>
+            </div>
+            <span class="uib_shim"></span>
+          </div>
+        </div>
+        <!-- /upage-content -->
+
+      </div>
+      <!-- /upage-outer -->
+ 
      </div>     
       
     <div title="MEEA TT Statistics - About" id="about" class="panel" data-tab="navbar_about">
