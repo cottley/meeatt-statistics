@@ -151,7 +151,7 @@
         <ul class="list inset" data-ng-controller="myAppController" id="reportSectionList">
           <li class="divider">Crude Oil Production</li>
           <li data-ng-repeat="reportSection in reportSectionBySegment('1') | filter:searchReportTitle ">
-            <a href="#reportdata{{reportSection.id}}">{{reportSection.title}}</a> 
+            <a ng-click="showreportdata('{{reportSection.id}}')">{{reportSection.title}}</a> 
           </li>
             <!--
           <li class="divider">Drilling, Completions and Workovers</li>
@@ -180,28 +180,7 @@
       </div>
     </div>
 
-    <div data-ng-repeat="reportSection in reportSections" title="MEEA TT Statistics - Report Data" id="reportdata{{reportSection.id}}" class="panel" data-tab="navbar_reports" scrolling="yes">
-      <header>
-        <h1>MEEA TT Statistics</h1>
-        <div class="widget-container wrapping-col single-centered"></div>
-        <div class="widget-container content-area horiz-area wrapping-col left">
-          <a class="button widget uib_w_3 d-margins icon up" data-uib="app_framework/button" ng-show="canDrillUp()" ng-click="drillUp()">Up</a>
-        </div>
-        <div class="widget-container content-area horiz-area wrapping-col right">
-          <a class="button widget uib_w_3 d-margins icon close" data-uib="app_framework/button" href="javascript:exitApp()">Exit</a>
-        </div>
-      </header>
-      <div class="upage-outer">
-        <div class="upage-content">
-
-          <div class="grid grid-pad urow uib_row_1 row-height-1" data-uib="layout/row">
-            <div class="col uib_col_1 col-0_12-12" data-uib="layout/col">
-              <div class="widget-container content-area vertical-col">
-
-                <div class="widget uib_w_1 d-margins" data-uib="media/text">
-                  <div class="widget-container left-receptacle"></div>
-                  <div class="widget-container right-receptacle"></div>
-                  <div style="overflow-x:scroll">
+    <div data-ng-repeat="reportSection in reportSections" id="reportdata{{reportSection.id}}" >
       <h2 style="height:auto !important">Report Data for {{reportSection.title}} {{ getFilterDescription() }}</h2>
       <div ng-show="!((filterYear != 'All') && (filterMonth != 'All')) || (filter_availableOperators.length <= 1)">
       <h3 style="height:auto !important">By year</h3>
@@ -239,19 +218,21 @@
         <br>
         <br>
         <br>
-        <br> <br>
-                  </div>
-                </div><span class="uib_shim"></span>
-              </div>
-            </div>
-            <span class="uib_shim"></span>
-          </div>
+        <br> <br>      
+    </div>      
+      
+    <div title="MEEA TT Statistics - Report Data" class="panel" id="reportdatapanel" data-tab="navbar_reports" scrolling="yes">
+      <header>
+        <h1>MEEA TT Statistics</h1>
+        <div class="widget-container wrapping-col single-centered"></div>
+        <div class="widget-container content-area horiz-area wrapping-col left">
+          <a class="button widget uib_w_3 d-margins icon up" data-uib="app_framework/button" ng-show="canDrillUp()" ng-click="drillUp()">Up</a>
         </div>
-        <!-- /upage-content -->
-
-      </div>
-      <!-- /upage-outer -->
- 
+        <div class="widget-container content-area horiz-area wrapping-col right">
+          <a class="button widget uib_w_3 d-margins icon close" data-uib="app_framework/button" href="javascript:exitApp()">Exit</a>
+        </div>
+      </header>
+      <div id="reportdatapanelcontent"></div>
      </div>     
       
     <div title="MEEA TT Statistics - About" id="about" class="panel" data-tab="navbar_about">

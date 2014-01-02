@@ -1,5 +1,5 @@
 /*jslint nomen: true, sloppy: true */
-/*global angular, _, console, numeral, $ */
+/*global angular, _, console, numeral, $, document */
 
 if (typeof String.prototype.startsWith !== 'function') {
     String.prototype.startsWith = function (str) {
@@ -65,6 +65,8 @@ controllers.myAppController = function ($scope, $http) {
     $scope.calculated_reportDataByOperator = [];
     
     $scope._defaultOperatorFilter = ["LAND", "MARINE"];
+    
+    $scope.currentReportId = "";
   
     $scope.setAvailableYears = function () {
         var result = [], data = $scope._tabledata, years = [], i;
@@ -400,7 +402,7 @@ controllers.myAppController = function ($scope, $http) {
             $scope.filterMonth = limitingFilter;
             $scope.onFilterMonthChanged();
         }
-        $.ui.scrollToTop($.ui.activeDiv.id);
+        $.ui.scrollToTop("reportdatapanel");
     };
     
     $scope.drillDownByOperator = function (operator) {
@@ -410,7 +412,7 @@ controllers.myAppController = function ($scope, $http) {
             $scope.filter_availableOperators.push(operator);
             $scope.onAllOperatorsChanged();
             $scope._synchronizeOperators();
-            $.ui.scrollToTop($.ui.activeDiv.id);
+            $.ui.scrollToTop("#reportdatapanel");
         }
     };
 
@@ -425,7 +427,7 @@ controllers.myAppController = function ($scope, $http) {
             $scope.filter_includeAllOperators = true;
             $scope.onAllOperatorsChanged();
         }
-        $.ui.scrollToTop($.ui.activeDiv.id);
+        $.ui.scrollToTop("#reportdatapanel");
     };
     
     $scope.canDrillUp = function () {
@@ -449,11 +451,13 @@ controllers.myAppController = function ($scope, $http) {
     $scope.onFilterYearChanged = function () {
         $scope.calculate_reportData();
         $scope.calculate_reportDataByOperator();
+        $scope.showreportdata($scope.currentReportId);
     };
 
     $scope.onFilterMonthChanged = function () {
         $scope.calculate_reportData();
         $scope.calculate_reportDataByOperator();
+        $scope.showreportdata($scope.currentReportId);        
     };
     
     $scope._synchronizeOperators = function () {
@@ -479,10 +483,16 @@ controllers.myAppController = function ($scope, $http) {
                 obj.checked = false;
             });
         } else {
-                    
+            // Who knows?        
         }
         $scope.calculate_reportData();
         $scope.calculate_reportDataByOperator();
+    };
+    
+    $scope.showreportdata = function (reportSectionId) {
+        document.getElementById("reportdatapanelcontent").innerHTML = document.getElementById("reportdata" + reportSectionId).innerHTML;
+        $.ui.loadContent("#reportdatapanel");
+        $scope.currentReportId = reportSectionId;
     };
 };
       
