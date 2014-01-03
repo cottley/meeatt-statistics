@@ -37,6 +37,8 @@ if (typeof Array.prototype.compare !== 'function') {
 var myApp = angular.module('myApp', []);
     
 var controllers = {};
+
+var currentReportId = '1A';
       
 controllers.myAppController = function ($scope, $http) {
 
@@ -65,8 +67,6 @@ controllers.myAppController = function ($scope, $http) {
     $scope.calculated_reportDataByOperator = [];
     
     $scope._defaultOperatorFilter = ["LAND", "MARINE"];
-    
-    $scope.currentReportId = "";
   
     $scope.setAvailableYears = function () {
         var result = [], data = $scope._tabledata, years = [], i;
@@ -402,7 +402,7 @@ controllers.myAppController = function ($scope, $http) {
             $scope.filterMonth = limitingFilter;
             $scope.onFilterMonthChanged();
         }
-        $.ui.scrollToTop("reportdatapanel");
+        $.ui.scrollToTop("#reportdatapanel");
     };
     
     $scope.drillDownByOperator = function (operator) {
@@ -490,10 +490,17 @@ controllers.myAppController = function ($scope, $http) {
     };
     
     $scope.showreportdata = function (reportSectionId) {
-        document.getElementById("reportdatapanelcontent").innerHTML = document.getElementById("reportdata" + reportSectionId).innerHTML;
-        $.ui.loadContent("#reportdatapanel");
-        $scope.currentReportId = reportSectionId;
+        if (reportSectionId) {
+            currentReportId = reportSectionId;
+            $.ui.loadContent("#reportdatapanel");
+        }
+
     };
+    
+    $scope.canShowReport = function (reportSectionId) {
+        return  (reportSectionId === currentReportId);
+    };
+    
 };
       
 myApp.controller(controllers);

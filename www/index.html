@@ -180,7 +180,22 @@
       </div>
     </div>
 
-    <div data-ng-repeat="reportSection in reportSections" id="reportdata{{reportSection.id}}" >
+    
+      
+    <div title="MEEA TT Statistics - Report Data" class="panel" id="reportdatapanel" data-tab="navbar_reports" scrolling="yes">
+      <header>
+        <h1>MEEA TT Statistics</h1>
+        <div class="widget-container wrapping-col single-centered"></div>
+        <div class="widget-container content-area horiz-area wrapping-col left">
+          <a class="button widget uib_w_3 d-margins icon up" data-uib="app_framework/button" ng-show="canDrillUp()" ng-click="drillUp()">Up</a>
+        </div>
+        <div class="widget-container content-area horiz-area wrapping-col right">
+          <a class="button widget uib_w_3 d-margins icon close" data-uib="app_framework/button" href="javascript:exitApp()">Exit</a>
+        </div>
+      </header>
+        
+      <div data-ng-repeat="reportSection in reportSections" id="reportdata{{reportSection.id}}" >
+      <div ng-show="canShowReport(reportSection.id)">
       <h2 style="height:auto !important">Report Data for {{reportSection.title}} {{ getFilterDescription() }}</h2>
       <div ng-show="!((filterYear != 'All') && (filterMonth != 'All')) || (filter_availableOperators.length <= 1)">
       <h3 style="height:auto !important">By year</h3>
@@ -220,19 +235,7 @@
         <br>
         <br> <br>      
     </div>      
-      
-    <div title="MEEA TT Statistics - Report Data" class="panel" id="reportdatapanel" data-tab="navbar_reports" scrolling="yes">
-      <header>
-        <h1>MEEA TT Statistics</h1>
-        <div class="widget-container wrapping-col single-centered"></div>
-        <div class="widget-container content-area horiz-area wrapping-col left">
-          <a class="button widget uib_w_3 d-margins icon up" data-uib="app_framework/button" ng-show="canDrillUp()" ng-click="drillUp()">Up</a>
         </div>
-        <div class="widget-container content-area horiz-area wrapping-col right">
-          <a class="button widget uib_w_3 d-margins icon close" data-uib="app_framework/button" href="javascript:exitApp()">Exit</a>
-        </div>
-      </header>
-      <div id="reportdatapanelcontent"></div>
      </div>     
       
     <div title="MEEA TT Statistics - About" id="about" class="panel" data-tab="navbar_about">

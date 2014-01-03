@@ -2,7 +2,7 @@
 /*global document, navigator */
 
 function onConfirmQuit(button) {
-    if (button === "1") {
+    if (button == "1") {
         navigator.app.exitApp();
     }
 }
